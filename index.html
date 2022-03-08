@@ -2,18 +2,51 @@
 
 <head>
 	<meta charset="utf-8">
+</head>
 	<script>
 		// TODO: create a handler
     window.addEventListener("load", function(){
-        // TODO: register the handler
+
+		let search = document.getElementById("searchForm");
+
+	//somehow I was stuck here and didn't think to include a submit event when the whole exercise revoloves around italic
+	// remember this and the addEventListener "load" etc. is initialization, other events are needed inside of it
+    	search.addEventListener("submit", function(event) {
+
+    		let selectedEngine = document.querySelector("input[name=engine]:checked").value;
+	  		// let myTextBox = document.querySelector("input[name=q]:checked").value;
+	   		/*for(let i = 0; i < engines.length; i++)
+	   		{
+	   		if(engines[i].checked){
+	   		let selectedEngine = engines[i];
+	   		}*/
+	   		//if(testInput === "") {
+        	//return "Empty"; 
+
+			let actions = {
+   			"google": "https://www.google.com/search",
+			"duck": "https://duckduckgo.com/",
+			"bing": "https://bing.com/search",
+			"ask": "https://ask.com/web"
+		};
+	
+		search.setAttribute("action",actions[selectedEngine]);
+		});
     });
+
 	</script>
-</head>
+
 
 <body>
 
 	<form id="searchForm">
     <!-- TODO: add form elements -->
+<label> <input type="text" name="q"/></label>
+      <label><input type="radio" name="engine" value="google"/>Google</label>
+      <label><input type="radio" name="engine" value="duck"/>DuckDuckGo</label>
+      <label><input type="radio" name="engine" value="bing" />Bing</label> 
+	<label><input type="radio" name="engine" value="ask"/>Ask</label>
+	<button value = "Go!">Go!</button>
 	</form>
 
 </body>
